@@ -1,0 +1,11 @@
+--- timezone-data-2017c.orig/Makefile	2018-01-27 21:34:42.262967975 +0100
++++ timezone-data-2017c/Makefile	2018-01-27 21:35:31.825965147 +0100
+@@ -639,7 +639,7 @@
+ 
+ libtz.a:	$(LIBOBJS)
+ 		rm -f $@
+-		$(AR) -rc $@ $(LIBOBJS)
++		$(AR) rc $@ $(LIBOBJS)
+ 		$(RANLIB) $@
+ 
+ date:		$(DATEOBJS)
