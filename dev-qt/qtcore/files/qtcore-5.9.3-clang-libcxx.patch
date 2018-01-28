@@ -1,0 +1,11 @@
+--- a/configure.orig	2018-01-28 22:04:55.628934688 +0100
++++ b/configure	2018-01-28 22:05:21.487933212 +0100
+@@ -593,7 +593,7 @@
+         esac
+         ;;
+      Linux:*)
+-        PLATFORM=linux-g++
++        PLATFORM=linux-clang-libc++
+         PLATFORM_NOTES="Linux: linux-clang linux-icc"
+         ;;
+      SunOS:5*)
