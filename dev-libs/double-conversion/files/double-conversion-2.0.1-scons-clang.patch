@@ -1,0 +1,11 @@
+--- SConstruct.orig	2018-01-28 13:23:22.233720230 +0100
++++ SConstruct	2018-01-28 13:23:51.639718552 +0100
+@@ -10,7 +10,7 @@
+ libdir = os.path.join(DESTDIR + prefix, lib)
+ 
+ env = Environment(CPPPATH='#/src', LIBS=['m', 'stdc++'],
+-    CXXFLAGS=ARGUMENTS.get('CXXFLAGS', ''))
++    CXXFLAGS=ARGUMENTS.get('CXXFLAGS', ''), ENV = os.environ)
+ debug = ARGUMENTS.get('debug', 0)
+ optimize = ARGUMENTS.get('optimize', 0)
+ env.Replace(CXX = ARGUMENTS.get('CXX', 'clang++'))
