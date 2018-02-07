@@ -1,0 +1,31 @@
+--- ./test/utils-prng.c.orig	2018-02-08 00:23:20.764028474 +0100
++++ ./test/utils-prng.c	2018-02-08 00:29:24.619035024 +0100
+@@ -31,6 +31,10 @@
+ #include <xmmintrin.h>
+ #endif
+ 
++#ifndef __has_builtin
++#define __has_builtin(x) 0
++#endif
++
+ void smallprng_srand_r (smallprng_t *x, uint32_t seed)
+ {
+     uint32_t i;
+@@ -200,11 +204,17 @@
+         else
+         {
+ #ifdef HAVE_GCC_VECTOR_EXTENSIONS
++#if !defined(__clang__) || __has_builtin(__builtin_shuffle)
+             const uint8x16 bswap_shufflemask =
+             {
+                 3, 2, 1, 0, 7, 6, 5, 4, 11, 10, 9, 8, 15, 14, 13, 12
+             };
+             randdata.vb = __builtin_shuffle (randdata.vb, bswap_shufflemask);
++#elif __has_builtin(__builtin_shufflevector)
++            randdata.vb = __builtin_shufflevector(randdata.vb, randdata.vb, 3, 2, 1, 0, 7, 6, 5, 4, 11, 10, 9, 8, 15, 14, 13, 12);
++#else
++#error "__builtin_shuffle and __builtin_shufflevector were not found!"
++#endif
+             store_rand_128_data (buf, &randdata, aligned);
+             buf += 16;
+ #else
