@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="Storage service for PIM data and libraries for PIM apps"
 HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 LICENSE="LGPL-2.1+"
 IUSE="+mysql postgres sqlite tools xml"
 
@@ -61,7 +61,7 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-17.03.80-mysql56-crash.patch"
-	"${FILESDIR}/${P}-llvm-libunwind-forced-unwind.patch"
+	"${FILESDIR}/${PN}-17.12.1-llvm-libunwind-forced-unwind.patch"
 )
 
 pkg_setup() {
