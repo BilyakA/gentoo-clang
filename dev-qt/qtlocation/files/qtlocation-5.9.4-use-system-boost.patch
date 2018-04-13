@@ -1,0 +1,14 @@
+diff -Naur src.orig/server/connection.cpp src/server/connection.cpp
+--- a/src/3rdparty/mapbox-gl-native/mapbox-gl-native.pro	2018-04-13 11:16:48.919139494 +0200
++++ b/src/3rdparty/mapbox-gl-native/mapbox-gl-native.pro	2018-04-13 11:17:03.291139753 +0200
+@@ -348,8 +348,8 @@
+     platform/qt/src/timer_impl.hpp \
+ 
+ INCLUDEPATH += \
+-    deps/boost/1.62.0 \
+-    deps/boost/1.62.0/include \
++    #deps/boost/1.62.0 \
++    #deps/boost/1.62.0/include \
+     deps/cheap-ruler/2.5.3 \
+     deps/cheap-ruler/2.5.3/include \
+     deps/earcut/0.12.4 \
