@@ -2,26 +2,38 @@
 An overlay for Gentoo, providing patches for upstream Gentoo repository to make it possible to build entire world with clang compiler.
 
 ## Quick start
-First of all you need to build clang with clang. The easiest way is to install clang:4 and then to build clang:5 with it.
+First of all you need to build clang with clang. The easiest way is to install clang:4 and then to build clang:5 (or clang:6 testing) with it.
 
 ```
 emerge -av1 clang:4 llvm:4
 ```
 Now add following to your make.conf (just like [wiki](https://wiki.gentoo.org/wiki/Clang#Global_configuration_via_make.conf) says):
+(it is important that you define full path to clang binaries or at least version of clang binaries, as compilation may fail somewhere in the middle because some biniries would be updated with llvm package and others - with clang package)
 ```
-CC="clang"
-CXX="clang++"
-CFLAGS="-pipe"
+CC="/usr/lib/llvm/4/bin/clang-4.0"
+CXX="/usr/lib/llvm/4/bin/clang++-4.0"
+CFLAGS="-O2 -pipe -march=native"
 CXXFLAGS="${CFLAGS}"
-LDFLAGS="-Wl,-O3 -Wl,--as-needed"
-AR="llvm-ar"
-NM="llvm-nm"
-RANLIB="llvm-ranlib"
+LDFLAGS="-Wl,-O2 -Wl,--as-needed"
+AR="/usr/lib/llvm/4/bin/llvm-ar"
+NM="/usr/lib/llvm/4/bin/llvm-nm"
+RANLIB="/usr/lib/llvm/4/bin/llvm-ranlib"
 ```
-Now you can build clang using clang (remember to remove clang:4 after you've done)
+Now you can build clang using clang (remember to remove clang:4 after you've done and change your make.conf to new version)
 ```
 emerge -av clang:5 llvm:5
 emerge --depclean -a
+```
+Change your make.conf to new version of clang:
+```
+CC="/usr/lib/llvm/5/bin/clang-5.0"
+CXX="/usr/lib/llvm/5/bin/clang++-5.0"
+CFLAGS="-O2 -pipe -march=native"
+CXXFLAGS="${CFLAGS}"
+LDFLAGS="-Wl,-O2 -Wl,--as-needed"
+AR="/usr/lib/llvm/5/bin/llvm-ar"
+NM="/usr/lib/llvm/5/bin/llvm-nm"
+RANLIB="/usr/lib/llvm/5/bin/llvm-ranlib"
 ```
 Before you start rebuilding entire world remember to include overrided eclasses to your gentoo repository.
 Add following to `/etc/portage/repos.conf/gentoo.conf` in `[DEFAULT]` section:
