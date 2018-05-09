@@ -42,7 +42,7 @@ eclass-overrides = gentoo-clang
 ```
 Finnaly you are good to go:
 ```
-emerge -eav1 @world
+emerge -eav1 --with-bdeps=y @world
 ```
 
 ## Notes
