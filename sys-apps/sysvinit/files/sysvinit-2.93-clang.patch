@@ -1,0 +1,15 @@
+--- a/src/Makefile	2019-10-31 17:19:27.886615494 +0100
++++ b/src/Makefile	2019-10-31 17:23:26.909621138 +0100
+@@ -136,10 +136,10 @@
+ shutdown:	dowall.o shutdown.o utmp.o
+ 
+ bootlogd:	LDLIBS += -lutil $(STATIC)
+-bootlogd:	bootlogd.o bootlogd.h
++bootlogd:	bootlogd.o
+ 
+ readbootlog:	LDLIBS += $(STATIC)
+-readbootlog:	readbootlog.o bootlogd.h
++readbootlog:	readbootlog.o
+ 
+ fstab-decode:	LDLIBS += $(STATIC)
+ fstab-decode:	fstab-decode.o
