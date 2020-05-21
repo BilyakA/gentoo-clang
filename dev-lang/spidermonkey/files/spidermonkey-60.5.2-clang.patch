@@ -1,0 +1,60 @@
+# HG changeset patch
+# User Ting-Wei Lan <lantw44@gmail.com>
+# Date 1563811605 -28800
+#      ??  7? 23 00:06:45 2019 +0800
+# Node ID 2ad705c52834140a1cd125c08818b1fbc8c044a4
+# Parent  a1b6b5f5806693cc5ff29a855a01faaa90357ae4
+Bug 1426865 - Missing symbols when building standalone SpiderMonkey 60 with Clang
+
+diff -r a1b6b5f58066 -r 2ad705c52834 js/public/TypeDecls.h
+--- a/js/public/TypeDecls.h	??  7? 10 13:39:01 2019 +0200
++++ b/js/public/TypeDecls.h	??  7? 23 00:06:45 2019 +0800
+@@ -21,31 +21,32 @@
+ #include <stdint.h>
+ 
+ #include "js-config.h"
++#include "jstypes.h"
+ 
+ typedef uint8_t jsbytecode;
+ 
+-class JSAtom;
+-struct JSCompartment;
+-struct JSContext;
+-class JSFunction;
+-class JSObject;
+-struct JSRuntime;
+-class JSScript;
+-class JSString;
+-class JSAddonId;
+-struct JSFreeOp;
++class JS_PUBLIC_API JSAtom;
++struct JS_PUBLIC_API JSCompartment;
++struct JS_PUBLIC_API JSContext;
++class JS_PUBLIC_API JSFunction;
++class JS_PUBLIC_API JSObject;
++struct JS_PUBLIC_API JSRuntime;
++class JS_PUBLIC_API JSScript;
++class JS_PUBLIC_API JSString;
++class JS_PUBLIC_API JSAddonId;
++struct JS_PUBLIC_API JSFreeOp;
+ 
+-struct jsid;
++struct JS_PUBLIC_API jsid;
+ 
+ namespace JS {
+ 
+ typedef unsigned char Latin1Char;
+ 
+-class Symbol;
+-class Value;
+-class Realm;
+-struct Runtime;
+-struct Zone;
++class JS_PUBLIC_API Symbol;
++class JS_PUBLIC_API Value;
++class JS_PUBLIC_API Realm;
++struct JS_PUBLIC_API Runtime;
++struct JS_PUBLIC_API Zone;
+ 
+ template <typename T>
+ class Handle;
