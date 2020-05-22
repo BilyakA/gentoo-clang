@@ -1,0 +1,11 @@
+--- ./configure.ac.orig	2020-05-22 09:56:02.129992439 +0200
++++ ./configure.ac	2020-05-22 09:56:22.196020022 +0200
+@@ -13,7 +13,7 @@
+ AC_SYS_LARGEFILE
+ 
+ CFLAGS="$CFLAGS -W -Wall"
+-CXXFLAGS="$CXXFLAGS -W -Wall"
++CXXFLAGS="$CXXFLAGS -W -Wall -std=c++03"
+ 
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
